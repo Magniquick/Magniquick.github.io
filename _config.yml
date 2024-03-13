@@ -33,12 +33,12 @@ social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
   name: Magniquick
-  email: example@domain.com # change to your email address
+  email: magniquick.sec@proton.me # change to your email address
   links:
     # The first element serves as the copyright owner's link
     - https://github.com/Magniquick # change to your github homepage
     # Uncomment below to add more social links
-    # - https://www.facebook.com/username
+    - https://discord.com/users/715159111355990058
     # - https://www.linkedin.com/in/username
 
 google_site_verification: N3BNsEMLCaoQrWK4Na6sqXw8LEzu68lq0bDL1vZjDM8
@@ -73,7 +73,7 @@ theme_mode: dark
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: pfp.png
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.

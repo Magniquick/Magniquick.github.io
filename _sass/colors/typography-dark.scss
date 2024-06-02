@@ -1,0 +1,158 @@
+/*
+ * The main dark mode styles
+ */
+@use 'mocha' as *;
+@use 'sass:color' as color;
+
+@function alpha-hex($color, $alpha) {
+  @return rgba(
+    color.red($color),
+    color.green($color),
+    color.blue($color),
+    $alpha
+  );
+}
+
+@mixin dark-scheme {
+  /* Framework color */
+  --main-bg: #{$base};
+  --mask-bg: rgb(0, 0, 0); /* seems to be unused ? */
+  --main-border-color: #{$surface1};
+
+  /* Common color */
+  --text-color: #{$text};
+  --text-muted-color: #{$subtext0};
+  --text-muted-hightlight-color: #{$subtext1};
+  --heading-color: #{$subtext1};
+  --label-color: #{$red};
+  --blockquote-border-color: #{$overlay0};
+  --blockquote-text-color: #{$subtext0};
+  --link-color: #{$blue};
+  --link-hover-color: #{alpha-hex($red, 0.8)};
+  --link-underline-color: none;
+  --button-bg: #{$mantle};
+  --btn-border-color: #{$surface1};
+  --btn-backtotop-color: var(--text-color);
+  --btn-backtotop-border-color: #{alpha-hex($mauve, 0.8)};
+  --btn-box-shadow: var(--main-bg);
+  --card-header-bg: #{$surface0};
+  --checkbox-color: #{$overlay1};
+  --checkbox-checked-color: var(--link-color);
+  --img-bg: radial-gradient(circle, #{$mantle} 0%, var(--main-bg) 100%);
+  --shimmer-bg: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0) 0%,
+    #{$mantle} 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+
+  /* Sidebar */
+  --site-title-color: var(--text-color);
+  --site-subtitle-color: #{$subtext0};
+  --sidebar-bg: #{$mantle};
+  --sidebar-border-color: none;
+  --sidebar-muted-color: var(--text-muted-color);
+  --sidebar-active-color: #{$blue};
+  --sidebar-hover-bg: #{$surface0};
+  --sidebar-btn-bg: #{$surface0};
+  --sidebar-btn-color: #{$subtext1};
+  --avatar-border-color: #{$surface2};
+
+  /* Topbar */
+  --topbar-bg: var(--main-bg);
+  --topbar-text-color: var(--text-color);
+  --search-border-color: #{$surface1};
+  --search-icon-color: #{$overlay2};
+  --input-focus-border-color: #{$overlay2};
+
+  /* Home page */
+  --post-list-text-color: rgb(255, 0, 0);
+  --btn-patinator-text-color: var(--text-color);
+  --btn-paginator-hover-color: #2e2e2e;
+
+  /* Posts */
+  --toc-highlight: #{$blue};
+  --tag-hover: #{$surface0};
+  --tb-odd-bg: #{$surface1}; /* odd rows of the posts' table */
+  --tb-even-bg: #{$surface0}; /* even rows of the posts' table */
+  --tb-border-color: var(--tb-odd-bg);
+  --footnote-target-bg: #{alpha-hex($blue, 0.3)};
+  --btn-share-color: var(--text-muted-color);
+  --btn-share-hover-color: var(--text-muted-hightlight-color);
+  --card-bg: #{$mantle};
+  --card-hovor-bg: #{$surface0};
+  --card-shadow: #{alpha-hex($blue, 0.33)} 0 2px 12px 0,
+    #{alpha-hex($sky, 0.25)} 0 0 0 1px;
+  --kbd-wrap-color: #{alpha-hex($blue, 0.75)};
+  --kbd-text-color: var(--text-color);
+  --kbd-bg-color: #{$surface0};
+  --prompt-text-color: #{$subtext1};
+  --prompt-tip-bg: #{alpha-hex($yellow, 0.2)};
+  --prompt-tip-icon-color: #{$yellow};
+  --prompt-info-bg: #{alpha-hex($sky, 0.2)};
+  --prompt-info-icon-color: #{$sky};
+  --prompt-warning-bg: #{alpha-hex($peach, 0.1)};
+  --prompt-warning-icon-color: #{$peach};
+  --prompt-danger-bg: #{alpha-hex($red, 0.1)};
+  --prompt-danger-icon-color: #{$red};
+
+  /* tags */
+  --tag-border: #{$surface1};
+  --tag-shadow:  #{$surface0};
+  --dash-color: #{$surface1};
+  --search-tag-bg: #292828;
+
+  /* categories */
+  --categories-border: #{$surface0};
+  --categories-hover-bg: rgb(255, 255, 255);
+  --categories-icon-hover-color: rgb(255, 0, 0);
+
+  /* archives */
+  --timeline-node-bg: #{$overlay2};
+  --timeline-color: #{$surface1};
+  --timeline-year-dot-color: var(--timeline-color);
+
+  .light {
+    display: none;
+  }
+
+  /* categories */
+  .categories.card,
+  .list-group-item {
+    background-color: var(--card-bg);
+  }
+
+  .categories {
+    .card-header {
+      background-color: var(--card-header-bg);
+    }
+
+    .list-group-item {
+      border-left: none;
+      border-right: none;
+      padding-left: 2rem;
+      border-color: var(--categories-border);
+
+      &:last-child {
+        border-bottom-color: var(--card-bg);
+      }
+    }
+  }
+
+  #archives li:nth-child(odd) {
+    background-image: linear-gradient(
+      to right,
+      #{$base},
+      #{alpha-hex($mantle, 1)},
+      #{alpha-hex($mantle, 0.5)},
+      #{$base}
+    );
+  }
+
+  color-scheme: dark;
+
+  /* stylelint-disable-next-line selector-id-pattern */
+  #disqus_thread {
+    color-scheme: none;
+  }
+} /* dark-scheme */
